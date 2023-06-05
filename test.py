@@ -14,7 +14,7 @@ def main():
     num1 = int(input("Enter the first number: "))
     num2 = int(input("Enter the second number: "))
 
-    # Calculate the sum and product of the numbers
+    
     sum_result = add_numbers(num1, num2)
     product_result = multiply_numbers(num1, num2)
 
