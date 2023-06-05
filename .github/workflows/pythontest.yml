@@ -1,37 +1,40 @@
-name: Flask App Tests 
+name: Flask App Tests
 
-on: 
+on:
   pull_request:
     branches:
       - main
 
 jobs:
   test:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./Users/Owner/Desktop/git      
+        working-directory: ./Users/Owner/Desktop/git
 
-    stategy:
+    strategy:
       matrix:
-        python-version: [3.8]    
+        python-version: [3.8]
 
     env:
       MODE: "dev"
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: set up python   
-        uses: actions/setup-python@v4 
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version:${{  matrix.python-version  }}  
+          python-version: ${{ matrix.python-version }}
 
-      - name: install dependencies
+      - name: Install dependencies
+        working-directory: ./Users/Owner/Desktop/git
         run: |
-          python -m pip install --upgrade pip
-          pip install -r ../requirements.txt
+             Run python -m pip install --upgrade pip
+               python -m pip install --upgrade pip
+               pip install -r requirements.txt
 
 
-      -name: test app code
-      run: python ./Users/Owner/Desktop/git/test.py
+      - name: Test app code
+        run: python ~/Desktop/git/test.py
